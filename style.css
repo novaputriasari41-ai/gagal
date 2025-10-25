@@ -1,0 +1,194 @@
+:root {
+  --primary: #089981;
+  --primary-600: #067963;
+  --bg: #f3faf8;
+  --card: #fff;
+  --muted: #2e615b;
+  --shadow: 0 6px 18px rgba(3,150,136,0.12);
+}
+[data-theme="dark"] {
+  --bg: #0c2a27;
+  --card: #112d29;
+  --muted: #d7f5ed;
+  --shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: var(--bg);
+  color: var(--muted);
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  padding: 10px 20px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 100;
+}
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+.nav-links a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: var(--primary);
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  z-index: 1002;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+/* RESPONSIVE MENU FIX */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--card);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    padding: 10px 0;
+    text-align: center;
+    z-index: 999;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .nav-links a {
+    padding: 10px 0;
+    color: var(--muted);
+  }
+  .nav-links a:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+}
+
+/* HERO & SECTIONS */
+.hero {
+  background: linear-gradient(135deg, #089981, #1ed5a4);
+  color: #fff;
+  border-radius: 20px;
+  padding: 50px 20px;
+  text-align: center;
+}
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+  background: none;
+}
+.section { display: none; opacity: 0; transition: opacity 0.4s; }
+.section.active { display: block; opacity: 1; }
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: var(--card);
+  border-radius: 10px;
+  margin: 20px;
+}
+
+/* ===== PERBAIKAN HAMBURGER HP ===== */
+.hamburger svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--muted);
+  pointer-events: none;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+@media (max-width: 780px) {
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Pastikan hamburger selalu di atas */
+  .hamburger {
+    position: relative;
+    z-index: 2000;
+  }
+
+  /* Animasi buka/tutup */
+  .nav-links {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  .nav-links.show {
+    max-height: 400px;
+  }
+}
